@@ -8,9 +8,11 @@
   --navy: #0000ff;
 }
 
-*{
+* {
   box-sizing: border-box;
+  margin: 0;
 }
+
 body {
   font-size: 16px;
   line-height: 1.5;
@@ -19,6 +21,7 @@ body {
 }
 
 nav {
+  margin: .5rem;
   display: flex;
   align-items: center;
   width: 100%;
@@ -37,6 +40,10 @@ nav {
 
 .navbar {
   top: 0;
+  width: 100%;
+  position: sticky;
+  background-color: white;
+  z-index: 1;
   transition: top 0.3s ease-in-out;
   padding: 1em;
 }
@@ -52,7 +59,8 @@ ul {
 li {
   padding-right: 1.5rem;
   font-weight: bold;
-  display: inline;
+  display: inline ;
+  cursor:pointer ;
 }
 
 h1 {
@@ -61,6 +69,10 @@ h1 {
 
 h4 {
   margin: 0;
+}
+
+img {
+  object-fit: cover;
 }
 
 p {
@@ -119,6 +131,7 @@ footer {
 #img-header {
   height: 50vw;
   width: 80vw;
+  object-fit: cover;
 }
 
 .page-collage {
@@ -215,21 +228,25 @@ select {
   color: white;
 }
 
-.job {
+#job {
   display: flex;
   flex-direction: row;
   padding: 8vw;
   padding-top: 0;
 }
 
-.job > div {
+#job > div {
   width: 50%;
 }
 
 .footer-info {
   display: grid;
   grid-template-columns: 2fr 2fr 3fr;
-  /* grid-template-rows: 2fr 2fr 3fr; */
+}
+
+.footer-info > div {
+  margin: 1rem;
+  margin-left: 0;
 }
 
 .footer-navbar {
@@ -294,11 +311,11 @@ select {
     height: 70vw;
   }
 
-  .job {
+  #job {
     flex-direction: column;
   }
 
-  .job > div {
+  #job > div {
     width: 100%;
   }
 
