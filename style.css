@@ -162,8 +162,6 @@ footer {
 }
 
 .page-text {
-  /* margin: 8vw 8vw 0 8vw; */
-  /* margin: 0 12vw 12vw 12vw; */
   margin: 0 20vw 8vw 20vw;
   margin-top: 0;
 }
@@ -229,7 +227,6 @@ select {
 .footer-info {
   display: grid;
   grid-template-columns: 2fr 2fr 3fr;
-  /* grid-template-rows: 2fr 2fr 3fr; */
 }
 
 .footer-navbar {
@@ -316,6 +313,5 @@ select {
 
   .footer-logo {
     order: 1;
-   /* flex-direction: row-reverse; */
   }
 }

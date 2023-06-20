@@ -8,35 +8,22 @@ const books = [
 
 var orders = {};
 
-const display = () => {
-  const gridPrice = document.querySelector('.book-price');
-  const gridOrder = document.querySelector('.book-order');
-  if(Object.keys(orders).length == 0){
-    gridPrice.textContent = 'No price';
-    gridOrder.textContent = 'No orders';
-  }
-}
-
-display();
-
 const displayOrder = () => {
   const gridOrder = document.querySelector('.book-order');
   gridOrder.innerHTML = '';
-
-  const listOfOrder = document.createElement('ul');
-  Object.keys(orders).forEach( bookName => {
-    var detail = document.createElement('li');
-    detail.textContent = `${bookName} for ${orders[bookName]} books`;
-    listOfOrder.appendChild(detail);
-  })
-
-  const orderLine = document.createElement('p');
-  orderLine.textContent = listOfOrder;
-
-  displayPrice();
-
-  gridOrder.append(listOfOrder);
-
+  if(Object.keys(orders).length == 0){
+    gridOrder.textContent = 'No orders';
+  }else{
+    const listOfOrder = document.createElement('ul');
+    Object.keys(orders).forEach( bookName => {
+      var detail = document.createElement('li');
+      detail.textContent = `${bookName} for ${orders[bookName]} books`;
+      listOfOrder.appendChild(detail);
+    })
+    const orderLine = document.createElement('p');
+    orderLine.textContent = listOfOrder;
+    gridOrder.append(listOfOrder);
+  }
 }
 
 const displayPrice = () => {
@@ -60,9 +47,14 @@ const displayPrice = () => {
       break;
   }
   gridPrice.textContent = `${TotalPrice} baht`;
-
 }
 
+const addToCart = (bookName, amount) => {
+  if(amount == 0 && bookName in orders) delete orders[bookName];
+  else if(amount > 0) orders[bookName] = amount;
+  displayOrder();
+  displayPrice();
+}
 
 const displayBook = () => {
   const gridContainer = document.querySelector('.book-info')
@@ -127,10 +119,7 @@ const displayBook = () => {
     }
 
     orderButton.onclick = function () {
-      if(quantity == 0 && book.name in orders) delete orders[book.name];
-      else orders[book.name] = quantity;
-      console.log(book.name, quantity);
-      displayOrder();
+      addToCart(book.name, quantity);
     }
 
     bookOrder.appendChild(select);
@@ -142,5 +131,6 @@ const displayBook = () => {
 
 }
 
+displayOrder();
+displayPrice();
 displayBook();
-
